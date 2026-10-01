@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Masini</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container">
+    <div class="d-flex justify-content-between mb-3">
+        <h2>Gestiune Masini</h2>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addVehicleModal">+ Masina Noua</button>
+    </div>
+
+    <table class="table table-white table-striped shadow-sm">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Placute</th>
+            <th>Model</th>
+            <th>Culoare</th>
+            <th>Actiuni</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="v : ${vehicles}">
+            <td th:text="${v.id}"></td>
+            <td th:text="${v.licensePlate}"></td>
+            <td th:text="${v.model}"></td>
+            <td th:text="${v.color}"></td>
+            <td>
+                <a th:href="@{/vehicles/delete/{id}(id=${v.id})}" class="btn btn-sm btn-danger">Sterge</a>
+                <a th:href="@{/vehicles/edit/{id}(id=${v.id})}" class="btn btn-sm btn-warning">Edit</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="~{fragments/vehicle-modal :: div}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

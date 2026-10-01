@@ -1,0 +1,30 @@
+<div class="modal fade" id="addVehicleModal" tabindex="-1" aria-labelledby="addVehicleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addVehicleModalLabel">Adauga Masina Noua</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:action="@{/vehicles/save}" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Numar Inmatriculare</label>
+                        <input type="text" name="licensePlate" class="form-control" placeholder="ex: CJ 555 ABC" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Model/Marca</label>
+                        <input type="text" name="model" class="form-control" placeholder="ex: Dacia Logan">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Culoare</label>
+                        <input type="text" name="color" class="form-control" placeholder="ex: Albastru">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn shadow-sm btn-secondary" data-bs-dismiss="modal">Inchide</button>
+                    <button type="submit" class="btn shadow-sm btn-primary">Salveaza Masina</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

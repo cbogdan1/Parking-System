@@ -1,0 +1,41 @@
+<div class="modal fade" id="addReservationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Rezerva un Loc</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form th:action="@{/reservations/create}" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Alege Masina</label>
+                        <select name="vehicle.id" class="form-select" required>
+                            <option th:each="v : ${vehicles}"
+                                    th:value="${v.id}"
+                                    th:text="${v.licensePlate + ' (' + v.model + ')'}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Alege Loc Disponibil</label>
+                        <select name="parkingSpot.id" class="form-select" required>
+                            <option th:each="ps : ${availableSpots}"
+                                    th:value="${ps.id}"
+                                    th:text="${ps.spotNumber + ' (' + ps.pricePerHour + ' RON/h)'}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Data Inceput</label>
+                        <input type="datetime-local" name="startTime" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Data Sfarsit</label>
+                        <input type="datetime-local" name="endTime" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn shadow-sm btn-primary">Confirma Rezervarea</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

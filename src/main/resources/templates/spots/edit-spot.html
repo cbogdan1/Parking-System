@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editare Loc Parcare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <div class="card shadow">
+        <div class="card-header bg-warning text-dark">
+            <h3>Editeaza Locul de Parcare</h3>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/spots/update}" th:object="${spot}" method="post">
+
+                <input type="hidden" th:field="*{id}" />
+
+                <div class="mb-3">
+                    <label class="form-label">Numar Loc:</label>
+                    <input type="number" th:field="*{spotNumber}" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Sectiune:</label>
+                    <input type="text" th:field="*{spotSection}" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Pret pe Ora (RON):</label>
+                    <input type="number" step="0.5" th:field="*{pricePerHour}" class="form-control" required />
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" th:field="*{occupied}" class="form-check-input" id="isOccupied" />
+                    <label class="form-check-label" for="isOccupied">Este Ocupat?</label>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-success">Salveaza Modificarile</button>
+                    <a th:href="@{/spots}" class="btn btn-secondary">Anuleaza</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

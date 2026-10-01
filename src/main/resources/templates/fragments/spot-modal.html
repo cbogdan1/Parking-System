@@ -1,0 +1,25 @@
+<div class="modal fade" id="addSpotModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Adauga Loc Nou</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form th:action="@{/spots/save}" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Cod Loc</label>
+                        <input type="text" name="spotNumber" class="form-control" placeholder="ex: A-01" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Pret pe Ora (RON)</label>
+                        <input type="number" step="0.5" name="pricePerHour" class="form-control" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn shadow-sm btn-success">Creeaza Loc</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
